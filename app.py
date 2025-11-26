@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session 
 import sqlite3 
+import os
  
 app = Flask(__name__) 
 app.secret_key = 'collegeconnectsecret' 
@@ -86,4 +87,4 @@ def logout():
     return redirect(url_for('index')) 
  
 if __name__ == "__main__": 
-    app.run(debug=True, port=8080)
+    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
